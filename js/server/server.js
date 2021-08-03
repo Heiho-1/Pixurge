@@ -2963,7 +2963,8 @@ io.sockets.emit('sj',posx,posy,userId,players,blocks,sockid)
 
 })
 socket.on('bp',(bpos,blockinfo) =>{
-blocks.push(bpos,blockinfo)
+bpos.push(blockinfo)
+blocks.push(bpos)
 io.sockets.emit('place',bpos,blockinfo)
 })
 socket.on('disconnect',function(){
