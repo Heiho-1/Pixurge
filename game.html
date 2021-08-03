@@ -1,0 +1,173 @@
+<game>
+
+<!--I suck at programming-->
+<!--
+                _       _   _                     _ _                       _ 
+               (_)     | | (_)                   | | |                     | |
+  ___  ___ _ __ _ _ __ | |_ _ _ __   __ _    __ _| | | _____      _____  __| |
+ / __|/ __| '__| | '_ \| __| | '_ \ / _` |  / _` | | |/ _ \ \ /\ / / _ \/ _` |
+ \__ \ (__| |  | | |_) | |_| | | | | (_| | | (_| | | | (_) \ V  V /  __/ (_| |
+ |___/\___|_|  |_| .__/ \__|_|_| |_|\__, |  \__,_|_|_|\___/ \_/\_/ \___|\__,_|
+                 | |                 __/ |                                    
+                 |_|                |___/                                     
+-->
+
+
+
+
+<title> Loading. </title>
+ <link rel="shortcut icon" type="image/jpg" href="images/favicon.ico"/>
+
+
+<!-- style -->
+<style type="text/css">
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+::-webkit-scrollbar-track {
+
+}
+ 
+::-webkit-scrollbar-thumb {
+  color: #4a6349;
+  background-color: #4a6349;
+}
+  @font-face{
+    font-family: 'pixelmix';
+    src: url('fonts/pixelmix/pixelmix.ttf');
+}
+@font-face{
+    font-family: 'gameover';
+    src: url('fonts/game-over/gameover.ttf');
+}
+canvas{
+    font-smooth: never;
+    -webkit-font-smoothing : none;
+}
+#bar{
+   width: 100%; 
+   position: absolute;
+   bottom: 9%;
+   border: 1px solid black;
+
+}
+#chatcontainer{
+word-wrap: break-word;
+overflow: auto;
+    size: 20px;
+    font-family: pixelmix;
+    position: absolute;
+white-space: initial;
+    padding: 2px;
+max-height: 37%;
+max-width: 23%;
+min-height: 37%;
+min-width: 23%;
+border: 3px solid black;
+position: absolute;
+bottom: 30px;
+left: 1px;
+background-color: rgba(0, 0, 0,0.4);
+  color: #4a6349;
+}
+
+#colorcontainer{
+text-align: center;
+align-content: center;
+word-wrap: break-word;
+overflow: auto;
+color: black;
+    size: 20px;
+    font-family: pixelmix;
+    position: absolute;
+white-space: initial;
+border-radius: 7px;
+min-height: 1%;
+min-width: 1%;
+border: 3px solid black;
+position: absolute;
+bottom: 9px;
+right: 4px;
+background-color: rgba(0, 0, 0,0.4);
+}
+#setbutton{
+   font-size: 120%; width: 70px; text-align:center; display: inline-block;
+border-radius:4px; 
+}
+
+#typecontainer{
+text-align: center;
+align-content: center;
+word-wrap: break-word;
+overflow: auto;
+color: black;
+    size: 20px;
+    font-family: pixelmix;
+    position: absolute;
+white-space: initial;
+border-radius: 7px;
+min-height: 1%;
+min-width: 1%;
+border: 3px solid black;
+position: absolute;
+bottom: 60px;
+right: 4px;
+background-color: rgba(0, 0, 0,0.4);
+}
+
+
+#chatform{
+height: 5%;
+width: 23.70%;
+border: 3px solid black;
+
+        outline: none;
+
+
+position: absolute;
+bottom: 1px;
+left: 1px;
+color: #4a6349;
+font-family: pixelmix;
+background-color: rgba(61, 51, 50,0.4);
+}
+
+.container { 
+height: 100%;
+  width: 100%;
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: center;  
+}
+</style>
+<!-- divs -->
+
+
+<div class="container" id="contain"> 
+<canvas id="canv" height="680" width="1400" style="">thisisacanvas</canvas>
+</div>
+
+<div id="chatcontainer"><chat></chat></div>
+<input type="form" id="chatform">
+<!-- scripts-->
+<script src= "./js/dependencies/jquery.js"></script>
+<script src= "./js/something.js"></script>
+<script src= "./js/stuff.js"></script>
+
+
+<div id="colorcontainer" style="color:white; "> 
+    <div id="setbutton" onclick='colorPick()'>color</div> 
+</div>
+<!--
+<div id="typecontainer" style="color:white; "> 
+    <div id="setbutton" onclick='typePick()'>type</div> 
+</div>
+-->
+
+
+
+<div id="backbutton" style="position:fixed; text-align: center; top:10px; left:5px; font-family:pixelmix; font-size:25px; border:3px solid black; background-color:rgba(0, 0, 0,0.4); color:#4a6349;" onclick="window.location.href = window.origin"><<</div>
+
+</game>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Pixurge</title>
+ <link rel="shortcut icon" type="image/jpg" href="images/favicon.ico"/>
+
+</head>
+<style type="text/css">
+*:focus {outline: none;}
+@font-face{
+    font-family: 'gameover';
+    src: url('fonts/game-over/gameover.ttf');
+}
+  @font-face{
+    font-family: 'pixelmix';
+    src: url('fonts/pixelmix/pixelmix.ttf');
+}
+  @font-face{
+    font-family: 'suggested';
+    src: url('fonts/suggested/suggested.ttf');
+}
+
+bottom {
+bottom: 10px;
+position: fixed;
+left: 48%;
+}
+
+a{
+color:  white;
+
+}
+body{
+background-color: rgba(1,0,0,0.9);
+font-family: pixelmix;
+color: #4a6349;
+} 
+#header{
+font-size: 100px;
+color: #4a6349;
+}
+
+#userId{
+  text-align: center;
+font-family: gameover;
+font-size: 30px;
+  height: 40px;
+  width: 900px;
+border: 3px solid black;
+}
+</style>
+  <script type="text/javascript">
+    genId = function(){
+      jumble="AIJOJOSJOAIJODJONXOIZBNOBXOBOABNOISNODB"
+let id = ""
+if(localStorage.getItem('userId') == null){
+for(i = 0; i < 8; i++){id+=`${jumble.charAt(Math.floor(Math.random()*jumble.length))}`}
+
+localStorage.setItem('userId',id);return id}else{let id = localStorage.getItem('userId');return id}}
+window.addEventListener('DOMContentLoaded', init)
+function init(){
+  genId()
+nameForm = document.getElementById('userId')
+setInterval(function(){if(nameForm.value.length > 17){nameForm.value = nameForm.value.slice(0,17)}})
+
+
+nameForm.addEventListener('keydown',function(event){
+if(event.key == "Enter"){
+localStorage.userId = nameForm.value 
+nameForm.value = ""
+setTimeout(function(){
+window.location.pathname = `${window.location.pathname}game.html` },300)
+}
+
+})
+
+}
+</script>
+<body>
+  <center>
+    <br><br><br>
+<div id="header">Pixurge<sup id="alpha" style="font-size:30px">alpha</sup></div>
+<br>
+<br><br><br>
+<input type="form" name="-" id="userId">
+
+<div id="">*pick a username and press enter</div>
+<br><br><br><br><br><br>
+<br><br><br><br>
+<br><br><br><br><br><br>
+<br><br>
+<div style="font-size: 12px; color:#3fb5b1;">Note: This website is extremely unsecure and exploitable</div>
+<div style="font-size: 12px; color:#3fb5b1;">No one's able to grab your IP but I don't have any anti-cheat</div>
+<div style="font-size: 12px; color:#3fb5b1;">in place, in a bit you'll be able to download the source-code</div>
+<div style="font-size: 12px; color:#3fb5b1;">from Github, allowing you to host your own private server and</div>
+<div style="font-size: 12px; color:#3fb5b1;">add your own custom features/auth to the server/client</div>
+
+</center>
+<bottom><a href="about.html">[ABOUT]</a></bottom>
+
+</body>
+</html>
+

@@ -1,0 +1,22 @@
+-------------- @Changelog ------------------------
+
+7/21/2021 - Start of changelog
+
+7/21/2021 - Made the code a little cleaner
+
+7/21/2021 - Added camera
+
+7/22/2021 - Added chat, optimized some more stuff
+
+7/23/2021 - Changed base entity size (From: 32) => (To: 23)
+
+7/23/2021 - Added vertical scroll
+
+7/24/2021 - Added differently colored blocks
+
+7/28/2021 - Changed name font (From: origami-mommy) => (To: gameover)
+
+7/29/2021 - Fixed a few bugs
+--------------------------------------------------
+
+It's really messy so
