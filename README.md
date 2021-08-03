@@ -1,3 +1,2 @@
 # Pixurge
-
-<span style="color:orange;">Word up</span>
+badly-written and horribly managed JS multi-player pixel game 
