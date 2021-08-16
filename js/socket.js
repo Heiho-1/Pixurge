@@ -58,8 +58,9 @@ $('chat').append(`<div style="size:3px;">${userId}: ${chatmsg}</div>`)
 $('chat').append(`<div style="size:3px; padding:3.40px;">${userId}: ${chatmsg}</div>`.replaceAll('<script>','[BLOCKED]')
          .replaceAll('onload','lmao')
          .replaceAll('</script>','[BLOCKED]')
-         .replaceAll('link','[BLOCKED]')
-         .replaceAll('iframe','lol'))
+         .replaceAll('link','lonk')
+         .replaceAll('iframe','lol')
+         .replaceAll('sex','[HARAM]'))
 }
 let container = document.getElementById('chatcontainer')
 container.scrollTop = container.scrollHeight;
