@@ -38,7 +38,6 @@ game.blocks.push(bpos)
 }) // Place block
  
 socket.on('destroy',(id)=>{
-    console.log(id)
 for(let i = 0; i < game.blocks.length; i++){
 if(game.blocks[i][game.blocks[i].length-1] == id){
     game.blocks.splice(i,1)
