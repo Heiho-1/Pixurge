@@ -49,7 +49,7 @@ dBlock = function(e){
       blockx = stabilizeInt(blockx-2,game.magicnum);blocky = stabilizeInt(blocky,game.magicnum)
       for(let i = 0; i < game.blocks.length; i++){
         if(game.blocks[i][0] == blockx && game.blocks[i][1] == blocky){
-          socket.emit('destroy',i)
+          socket.emit('destroy',game.blocks[i][game.blocks[i].length-1])
         }
       }
     }

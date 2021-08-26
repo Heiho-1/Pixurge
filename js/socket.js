@@ -33,13 +33,16 @@ socket.on('plmv',(posx,posy,userId) => {
 }) // Player-pos update
 
 
-socket.on('place',(bpos,blockinfo)=>{
-    bpos.push(blockinfo)
+socket.on('place',(bpos)=>{
 game.blocks.push(bpos)
 }) // Place block
  
-socket.on('destroy',(num)=>{
-game.blocks.splice(num,1)
+socket.on('destroy',(id)=>{
+    console.log(id)
+for(let i = 0; i < game.blocks.length; i++){
+if(game.blocks[i][game.blocks[i].length-1] == id){
+    game.blocks.splice(i,1)
+}}
 }) // Destroy block
 
 socket.on("discon",(sockid)=>{

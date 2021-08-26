@@ -14,6 +14,15 @@ const io = require('socket.io')(server,{
 });
 
 //  vars
+function genid(){
+let id = ''
+charset = "㡄ࡄ茢蕃馗茢焣̢ृ−㈑࠲茣{}!@#%^&*()_+1234567890ABCDEFGHIJKLMNOPQRSTUVģࡃ茡猢ሒ⌵╘╘█⡔▄▁"
+for(i = 0; i < 6; i++){
+id = id.concat(charset.charAt(Math.floor(Math.random()*charset.length)))
+}
+return id
+}
+
 var rplayers = []
 var players = []
 var blocks =[
@@ -2954,18 +2963,15 @@ socket.on('join',(posx,posy,userId) =>{
  for(let i = 0; i < players.length; i++){
  if(players[i][2] == userId){
   players.splice(i,1)
- }
-
- } 
+ }}
 
 players.push([posx,posy,userId,sockid])
 io.sockets.emit('sj',posx,posy,userId,players,blocks,sockid)
-
 })
-socket.on('bp',(bpos,blockinfo) =>{
-bpos.push(blockinfo)
+socket.on('bp',(bpos) =>{
+bpos.push(genid())
 blocks.push(bpos)
-io.sockets.emit('place',bpos,blockinfo)
+io.sockets.emit('place',bpos)
 })
 socket.on('disconnect',function(){
     let sockid =  socket.id
@@ -2978,22 +2984,18 @@ socket.on('disconnect',function(){
 
     }
 })
-socket.on('destroy',(i) =>{
+socket.on('destroy',(id) =>{
+for(let i = 0; i < blocks.length; i++){
+if(blocks[i][blocks[i].length-1] == id){
 blocks.splice(i,1)
-io.sockets.emit('destroy',i)
-})
-
-socket.on('br',(bpos) =>{
-/*blocks.push(bpos)
-io.sockets.emit('remove',bpos)*/
+io.sockets.emit('destroy',id)
+}}
 })
 socket.on('move',(posx,posy,userId) =>{
 io.sockets.emit('plmv',posx,posy,userId)
 })
-
 socket.on('msg',(chatmsg,userId)=>{
 io.sockets.emit('msg',chatmsg,userId)
-
 })
 
 })
