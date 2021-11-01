@@ -11,10 +11,18 @@ socketAddr = herokuServ
   await $.getScript('js/draw.js')
   await $.getScript('js/chat.js')
   await $.getScript('js/keys.js')
+  await $.getScript('js/texture.js')
+    await $.getScript('js/ui.js')
+
 // load
 
 // update
+
  update = function(){
+  
+  if(typeof document.getElementById('setbutton') !== "undefined" && document.getElementById('setbutton') !== null){
+  game.blockColor = document.getElementById('setbutton').value
+}
     game.context.textAlign = "center";
 game.canvas.style.width=game.canvas.width; game.canvas.style.height = game.canvas.height;
      game.canvas.height = window.innerHeight + 20;game.canvas.width = window.innerWidth + 64;game.context.font = '17px gameover';
@@ -24,14 +32,12 @@ game.player.pos.y = Math.floor(game.player.pos.y / game.stride) * game.stride
 if(game.lastpos.x !== game.player.pos.x || game.lastpos.y !== game.player.pos.y){
   let posx = game.player.pos.x 
 let posy = game.player.pos.y
-  socket.emit('move',posx,posy,userId)
+  socket.emit('move',posx,posy,game.sockid)
 }
 
 
 game.lastpos.x = game.player.pos.x
 game.lastpos.y = game.player.pos.y
-
-
 
 draw()
 
@@ -43,6 +49,9 @@ setInterval(function(){
   keycheck()
 },50)
 // defs
+playerSprite = new Image(23,23)
+playerSprite.src = "images/player.png"
+
 game = {
   blocks:[],
   magicnum: 23,

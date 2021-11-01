@@ -1,44 +1,16 @@
-// stabilizing
-
-function stabilizeInt(num,cap){
-intt = Math.floor(num / cap) * cap
-return intt
+function stabilizeInt(a,b){
+return Math.floor(a / b) * b
 }
-
-
-
 // collision checking
 checkcol = function(posx,posy){
  for(i = 0; i < game.blocks.length; i++){
 if(game.blocks[i][0] == posx && game.blocks[i][1] == posy){
 return false
 break;
-}
-}
+}}
 return true
- }
+}
 
-
-
-// blockshit
-pBlock = function(e){
-
-   rect = game.canvas.getBoundingClientRect();
-      game.mouse.x = e.clientX - game.currentX + game.magicnum + 2
-      game.mouse.y = e.clientY - game.currentY + 4
-       blockx = Math.round(game.mouse.x)
-       blocky = Math.round(game.mouse.y)
-      blockx = stabilizeInt(blockx-2,game.magicnum);blocky = stabilizeInt(blocky,game.magicnum)
-    if(checkcol(blockx,blocky)){
-      let blockinfo = game.blockinfo
-      let bpos = [stabilizeInt(blockx,game.magicnum),stabilizeInt(blocky,game.magicnum),game.magicnum,game.blockColor]
-    socket.emit('bp',bpos,blockinfo)
-  }else{
-
-  }
-
-    }
-    
 dBlock = function(e){
 
    rect = game.canvas.getBoundingClientRect();
@@ -53,7 +25,28 @@ dBlock = function(e){
         }
       }
     }
-cpick = function(e){
+
+pBlock = function(e){
+
+
+   rect = game.canvas.getBoundingClientRect();
+      game.mouse.x = e.clientX - game.currentX + game.magicnum + 2
+      game.mouse.y = e.clientY - game.currentY + 4
+       blockx = Math.round(game.mouse.x)
+       blocky = Math.round(game.mouse.y)
+      blockx = stabilizeInt(blockx-2,game.magicnum);blocky = stabilizeInt(blocky,game.magicnum)
+    if(checkcol(blockx,blocky)){
+      let blockinfo = game.blockinfo
+      let bpos = [stabilizeInt(blockx,game.magicnum),stabilizeInt(blocky,game.magicnum),game.magicnum,game.blockColor,`${localStorage.texture}`,"type:none"]
+    socket.emit('bp',bpos,blockinfo)
+  }else{
+
+  }
+
+    }
+
+
+    cpick = function(e){
 
    rect = game.canvas.getBoundingClientRect();
       game.mouse.x = e.clientX - game.currentX + game.magicnum
@@ -63,12 +56,12 @@ cpick = function(e){
       blockx = stabilizeInt(blockx-2,game.magicnum);blocky = stabilizeInt(blocky,game.magicnum)
       for(let i = 0; i < game.blocks.length; i++){
         if(game.blocks[i][0] == blockx && game.blocks[i][1] == blocky && typeof game.blocks[i][3] !== "undefined"){
-        game.blockColor = game.blocks[i][3]
-            document.getElementById('colorcontainer').style.backgroundColor = game.blockColor
+           if(typeof document.getElementById('setbutton') !== "undefined" && typeof document.getElementById('setbutton') !== "null"){
+document.getElementById('setbutton').value = game.blocks[i][3]
+} else{
+game.blockColor = game.blocks[i][3]
+}
 
         }
       }
     }
-
-
-// delete block

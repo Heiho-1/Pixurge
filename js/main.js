@@ -2,12 +2,15 @@ document.addEventListener('contextmenu', event => event.preventDefault());
 
 
 function main(){
+game.screen = {}
+	if(typeof localStorage.texture == "undefined"){
+    localStorage.texture = `texture:texture:http://localhost/Pixurge/images/wood.png`
+	}
+
+
 	game.keymap = []
 grounded = false
-	colorPick = function(){
-    game.blockColor = prompt('Choose a color ( name/hex/rgb(r,g,b,o) ):')
-    document.getElementById('colorcontainer').style.backgroundColor = game.blockColor
-	}
+
 // get id
 userId = genId()
 
@@ -22,12 +25,17 @@ keyp = function(event){
 	let posx = game.player.pos.x
 	let posy = game.player.pos.y
     game.keymap[event.key] = event.type == 'keydown';
+    game.keymap['e'] = event
 
 
 }
 // evtlist
 document.addEventListener('keydown',keyp)
 document.addEventListener('keyup',keyp)
+document.addEventListener('mousemove',function(e){
+        game.screen.x = e.clientX
+      game.screen.y = e.clientY
+  })
 
 game.canvas.addEventListener('mousedown',function(event){
 switch(event.which){

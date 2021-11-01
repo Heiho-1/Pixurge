@@ -1,3 +1,4 @@
+ cstyle = 'font-family:monospace; font-size:30px; font-color: black; letter-spacing:4px; background-color:rgb(0,0,0,0.4); border:3px solid #404040; border-radius:3px;'
 
  var connectionOptions =  {
             "force new connection" : true,
@@ -15,25 +16,30 @@
 
         if(typeof game.players[`${sockid}`] == "undefined" || game.players[`${sockid}`] == null){
    game.blocks = blocks
-   if(userId == window.userId){game.sockid = sockid; game.gravity = game.magicnum}
+   if(socket.id == sockid){game.sockid = sockid; game.gravity = game.magicnum}
 for(let i = 0; i < players.length;i++){
     if(players[i][3] !== game.sockid){
- game.players[`${players[i][2]}`] = players[i]
+ game.players[`${players[i][3]}`] = players[i]
     }}
 }
 }) // On-joined/on-join
 
-socket.on('plmv',(posx,posy,userId) => {
-    if(userId !== window.userId){
-        if(typeof  game.players[`${userId}`] !== "undefined"){
- game.players[`${userId}`][0] = posx
+socket.on('plmv',(posx,posy,sockid) => {
+    if(sockid !== window.sockid){
+        if(typeof  game.players[`${sockid}`] !== "undefined"){
+ game.players[`${sockid}`][0] = posx
 
- game.players[`${userId}`][1] = posy
+ game.players[`${sockid}`][1] = posy
    } }
 }) // Player-pos update
 
 
+socket.on('x',(r)=>{
+console.log(`%c${r}`,cstyle)
+})
+
 socket.on('place',(bpos)=>{
+
 game.blocks.push(bpos)
 }) // Place block
  

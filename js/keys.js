@@ -1,4 +1,36 @@
 function keycheck(){
+   if(game.playersopen == true && game.keymap["`"] == false){
+          game.playersopen = false
+     if(typeof $('div#tempdiv')[0] !== "undefined"){
+     $('div#tempdiv')[0].remove()
+     }
+     }
+  if( game.keymap['`'] == true){
+      if(typeof $('div#tempdiv')[0] !== "undefined"){
+     $('div#tempdiv')[0].remove()
+     }
+    showplayers()
+}
+
+
+
+
+  
+  
+   if(game.keymap["Control"] == true && game.keymap["y"] == true){
+ 
+   game.keymap["Control"] = false
+   game.keymap["y"] = false
+   let a = prompt('Texture link?')
+   if(a == 'none' || a == '' || a == ' ' || a == null){
+   localStorage.texture = "none"
+   }else{
+    localStorage.texture = `texture:${a}`
+   }
+   }
+
+
+
 
     if(game.keymap['ArrowUp'] == true){
     	if(checkcol(game.player.pos.x,game.player.pos.y - game.magicnum)){
