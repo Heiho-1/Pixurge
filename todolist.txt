@@ -1,0 +1,4 @@
+1. Show color picker by pressing [C]
+2. Add the ability to show players by pressing tab [changed to `] (X)
+3. Add the option to swap udlr with wasd
+4. Add the ability to place blocks in rows       
